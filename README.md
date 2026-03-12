@@ -10,6 +10,14 @@
 
 現在の M5StickC 版では、可変抵抗の値を `-10` から `10` の整数に変換して扱います。
 
+## ケース写真
+
+可変抵抗器と M5StickC をケースに収めた写真を `images/` に置いています。
+
+![ケース写真 1](images/IMG_1203.jpg)
+
+![ケース写真 2](images/IMG_1204.jpg)
+
 ## 1. 主なファイル
 
 - `M5StickC_ADC/M5StickC_ADC.ino`: M5StickC 用の Arduino スケッチ本体
@@ -165,14 +173,6 @@ constexpr int32_t kOutputMax = 10;
 - `-50` から `50` にしたい: `kOutputMin = -50`, `kOutputMax = 50`
 
 シリアル出力と画面表示は、どちらも同じレンジに自動で変わります。
-
-## 12. ケース写真
-
-可変抵抗器と M5StickC をケースに収めた写真を `images/` に置いています。
-
-![ケース写真 1](images/IMG_1203.jpg)
-
-![ケース写真 2](images/IMG_1204.jpg)
 
 ## 13. CAD データ
 
