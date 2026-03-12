@@ -1,18 +1,18 @@
-# M5StickC 可変抵抗読み取りプロジェクト
+# M5StickC 可変抵抗読み取り装置
 
-このリポジトリの主目的は、M5StickC で可変抵抗の値を読み取り、
+M5StickC で可変抵抗の値を読み取り、
 
 - M5StickC の画面に大きく表示する
 - USB シリアルへ整数値を書き出す
 - Mac 側の GUI で値を読む
 
-ためのサンプルをまとめることです。
+ためのサンプルです。
 
 現在の M5StickC 版では、可変抵抗の値を `-10` から `10` の整数に変換して扱います。
 
 ## ケース写真
 
-可変抵抗器と M5StickC をケースに収めた写真を `images/` に置いています。
+ 可変抵抗器と M5StickC をケースに収めた写真：
 
 ![ケース写真 1](images/IMG_1203.jpg)
 
@@ -20,22 +20,21 @@
 
 ## 1. 主なファイル
 
-- `M5StickC_ADC/M5StickC_ADC.ino`: M5StickC 用の Arduino スケッチ本体
-- `read_value_gui.py`: シリアル値を PC 上で大きく表示する Python GUI
+- `M5StickC_ADC.ino`: M5StickC 用の Arduino スケッチ本体
+- `read_value_gui.py`: シリアル値を PC 上で大きく表示する Python GUI サンプル
 - `CAD/VolumeBox.scad`: ケースの OpenSCAD 元データ
 - `CAD/VolumeBox.stl`: ケース本体の STL
 - `CAD/urabuta.stl`: 裏ぶたの STL
-- `ESP32_S3_ADC.ino`: XIAO ESP32-S3 向けの参考スケッチ
+- `esp32/ESP32_S3_ADC.ino`: XIAO ESP32-S3 向けの参考スケッチ
 
-通常は `M5StickC_ADC/M5StickC_ADC.ino` と `read_value_gui.py` を使います。
+通常は `M5StickC_ADC.ino` と `read_value_gui.py` を使います。
 
 ## 2. M5StickC でできること
 
 - 可変抵抗器の値を `GPIO36` から読む
 - 値を `-10` から `10` の整数へ線形変換する
-- M5StickC の LCD に大きな数字だけを表示する
+- M5StickC の LCD に数字を表示する
 - シリアルへ同じ値を 1 行ずつ出力する
-- 内蔵赤色 LED は常時消灯のままにする
 
 現在の設定:
 
@@ -149,7 +148,7 @@ python3 read_value_gui.py --port /dev/cu.usbserial-*****
 
 ## 11. 設定を変える
 
-`M5StickC_ADC/M5StickC_ADC.ino` の先頭の定数を変更します。
+`M5StickC_ADC.ino` の先頭の定数を変更します。
 
 ```cpp
 constexpr uint8_t kPotPin = 36;
@@ -195,10 +194,6 @@ constexpr int32_t kOutputMax = 10;
 - 配線ミスの可能性があります
 - 特に `VALUE` の接続先と `VCC` 電圧を確認してください
 
-### LED が光らない
-
-- この版では意図的に LED を常時消灯にしています
-
 ### 画面に何も出ない
 
 - `M5StickC` ライブラリが入っているか
@@ -208,7 +203,7 @@ constexpr int32_t kOutputMax = 10;
 
 ## 15. XIAO ESP32-S3 版について
 
-`ESP32_S3_ADC.ino` は、もともとの XIAO ESP32-S3 向けスケッチです。
+`ESP32_S3_ADC.ino`  XIAO ESP32-S3 向けスケッチです。
 こちらは M5StickC 版の主対象ではなく、配線や ADC 読み取りの比較用・参考用として残しています。
 
 XIAO 版の特徴:
